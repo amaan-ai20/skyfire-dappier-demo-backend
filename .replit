@@ -15,10 +15,10 @@ author = "agent"
 
 [[workflows.workflow.tasks]]
 task = "workflow.run"
-args = "API Server"
+args = "Flask API"
 
 [[workflows.workflow]]
-name = "API Server"
+name = "Flask API"
 author = "agent"
 
 [[workflows.workflow.tasks]]
