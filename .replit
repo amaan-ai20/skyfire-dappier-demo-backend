@@ -15,24 +15,24 @@ author = "agent"
 
 [[workflows.workflow.tasks]]
 task = "workflow.run"
-args = "Flask API Server"
+args = "API Server"
 
 [[workflows.workflow]]
-name = "Flask API Server"
+name = "API Server"
 author = "agent"
-
-[workflows.workflow.metadata]
-outputType = "console"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "gunicorn --bind=0.0.0.0:8000 --workers=2 app:app"
+args = "python app.py"
 waitForPort = 8000
+
+[workflows.workflow.metadata]
+outputType = "console"
 
 [[ports]]
 localPort = 8000
 externalPort = 8000
 
 [deployment]
-deploymentTarget = "vm"
-run = ["gunicorn", "--bind=0.0.0.0:8000", "--workers=2", "app:app"]
+deploymentTarget = "autoscale"
+run = ["python", "app.py"]
